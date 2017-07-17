@@ -17,14 +17,15 @@ def getDataFrom(index):
 
         html = html.replace('\\n', '')
         # print html
-        _article = re.findall('data-photo-id.*?>', html)
-        for id in _article:
-            # print id
-            id = id.replace('data-photo-id=\\"', '')
-            id = id.replace('\\">', '')
-            # print id
-            image = 'https://images.pexels.com/photos/%s/pexels-photo-%s.jpeg' % (id, id)
-            print image
+
+        _src = re.findall('src=.*?/>' , html)
+        for src in _src:
+            print src
+            imagesrc = re.findall('https.*\?' , src)
+            imagesrc = imagesrc[0][:-1]
+            print imagesrc
+
+
         return True
 
 
